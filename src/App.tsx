@@ -1,11 +1,8 @@
 import React from "react";
+import Home from "./pages/Home";
 
 function App() {
-  return (
-    <div className="App">
-      <div className="text-red-500">test2</div>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
