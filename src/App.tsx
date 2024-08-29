@@ -52,6 +52,34 @@ const App = () => {
           </Routes>
         </motion.div>
       </AnimatePresence>
+
+      {/* 오른쪽 하단에 고정된 소셜 링크 버튼 */}
+      <div className="fixed bottom-4 right-4 flex flex-col space-y-3">
+        <a
+          href="https://github.com/jaeho9"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-80 transition"
+        >
+          <img
+            src="/images/icons/github.svg" // GitHub 아이콘 경로
+            alt="GitHub"
+            className="w-12 h-12"
+          />
+        </a>
+        <a
+          href="https://velog.io/@l2281/posts" // 블로그 URL로 교체
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-80 transition"
+        >
+          <img
+            src="/images/icons/velog.svg" // 블로그 아이콘 경로
+            alt="Blog"
+            className="w-12 h-12"
+          />
+        </a>
+      </div>
     </div>
   );
 };
