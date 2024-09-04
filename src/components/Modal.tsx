@@ -1,44 +1,39 @@
+// src/components/Modal.tsx
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 interface ModalProps {
-  id: string;
-  subtitle: string;
-  title: string;
-  onClose: () => void;
+  isOpen: boolean;
+  onRequestClose: () => void;
+  content: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ id, subtitle, title, onClose }) => {
+const CustomModal: React.FC<ModalProps> = ({
+  isOpen,
+  onRequestClose,
+  content,
+}) => {
   return (
-    <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-      >
-        <motion.div
-          className="bg-white rounded-lg p-6 w-full max-w-md"
-          onClick={(e) => e.stopPropagation()} // 클릭 이벤트 버블링 방지
-          layoutId={id}
-          initial={{ y: "-100vh" }}
-          animate={{ y: 0 }}
-          exit={{ y: "100vh" }}
-          transition={{ type: "spring", stiffness: 300 }}
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      contentLabel="Information Modal"
+      className="fixed inset-0 flex items-center justify-center"
+      overlayClassName="fixed inset-0 bg-black bg-opacity-75"
+    >
+      <div className="bg-white text-black p-6 rounded-lg w-96">
+        <button
+          onClick={onRequestClose}
+          className="text-right mb-4 text-gray-600 hover:text-gray-900"
         >
-          <motion.h5 className="text-gray-500">{subtitle}</motion.h5>
-          <motion.h2 className="text-xl font-bold">{title}</motion.h2>
-          <motion.button
-            onClick={onClose}
-            className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"
-          >
-            Close
-          </motion.button>
-        </motion.div>
-      </motion.div>
-    </AnimatePresence>
+          &times;
+        </button>
+        <div>{content}</div>
+      </div>
+    </Modal>
   );
 };
 
-export default Modal;
+export default CustomModal;

@@ -2,7 +2,10 @@ import React from "react";
 
 const Projects = () => {
   return (
-    <section className="h-screen flex flex-col items-center justify-center bg-gray-300">
+    <section
+      id="projects"
+      className="h-screen flex flex-col items-center justify-center bg-gray-700"
+    >
       <h1 className="text-4xl">My Projects</h1>
       <p className="text-xl mt-4">Here are some of my recent works:</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
