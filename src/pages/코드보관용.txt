@@ -1,0 +1,89 @@
+ {/* GitHub Contributions and Education Section */}
+      {/* <motion.div
+        className="flex flex-row space-x-12 items-start w-3/4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <div className="flex flex-col items-start space-y-6 px-[150px]">
+          <h3 className="text-4xl font-bold mb-4">GitHub Contributions</h3>
+          <img
+            src="https://ghchart.rshah.org/FF60A6/jaeho9"
+            alt="GitHub Contributions Chart"
+            className="border border-gray-300 rounded-lg shadow-lg"
+          />
+          <div className="flex flex-row items-center space-x-4 ">
+            <img
+              src="https://github-readme-stats.vercel.app/api?username=jaeho9&hide_title=true&hide_border=true&show_icons=true&count_private=true&include_all_commits=true"
+              alt="GitHub Stats"
+              className="border border-gray-300 rounded-lg shadow-lg"
+            />
+            <img
+              src="https://github-readme-stats.vercel.app/api/top-langs/?username=jaeho9&layout=compact&hide_border=true&langs_count=10"
+              alt="Top Languages"
+              className="border border-gray-300 rounded-lg shadow-lg"
+            />
+          </div>
+          <img
+            src="https://github-readme-streak-stats.herokuapp.com/?user=jaeho9"
+            alt="GitHub Streak"
+            className="border border-gray-300 rounded-lg shadow-lg"
+          />
+        </div>
+
+        Education and Background
+        <div className="flex flex-col items-start space-y-4">
+          <h3 className="text-2xl font-bold mb-4">Education & Background</h3>
+          <div
+            className="bg-white text-black p-6 rounded-lg shadow-lg w-72 cursor-pointer hover:bg-gray-200 transition"
+            onClick={() =>
+              openModal(
+                "출신학교: ABC 대학교\n전공: 컴퓨터 공학\n기타 교육: XYZ 부트캠프 수료"
+              )
+            }
+          >
+            <h4 className="text-xl font-bold">출신학교 및 교육</h4>
+            <p className="mt-2">ABC 대학교 - 컴퓨터 공학</p>
+            <p>XYZ 부트캠프</p>
+          </div>
+        </div>
+      </motion.div> */}
+
+      {/* <motion.div
+        className="mt-12 w-full flex flex-col items-center justify-center"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
+      >
+        <h3 className="text-2xl font-bold mb-4">Interview</h3>
+        <div className="w-full flex flex-col items-center space-y-4">
+          <button
+            className="bg-white text-black p-4 w-1/2 rounded-lg shadow-lg cursor-pointer hover:bg-gray-200 transition"
+            onClick={() =>
+              openModal(
+                "제가 개발을 시작한 이유는 [개발을 시작하게 된 이유]입니다."
+              )
+            }
+          >
+            개발을 시작한 이유는(질문 수정해야됨)?
+          </button>
+          <button
+            className="bg-white text-black p-4 w-1/2 rounded-lg shadow-lg cursor-pointer hover:bg-gray-200 transition"
+            onClick={() =>
+              openModal(
+                "저는 개발할 때 [당신의 철학]을 가장 중요하게 생각합니다."
+              )
+            }
+          >
+            어떤 개발을 좋아하는지 (질문 수정해야됨)?
+          </button>
+          <button
+            className="bg-white text-black p-4 w-1/2 rounded-lg shadow-lg cursor-pointer hover:bg-gray-200 transition"
+            onClick={() =>
+              openModal("제가 받은 교육은 [당신의 교육과정]입니다.")
+            }
+          >
+            박 박 기 기 범 범 3 C M
+          </button>
+        </div>
+      </motion.div> */}

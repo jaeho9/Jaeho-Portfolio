@@ -1,44 +1,45 @@
 // src/pages/About.tsx
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import CustomModal from "../components/Modal";
+import { motion, useScroll } from "framer-motion";
 import { useNavbarContext } from "../context/NavbarContext";
-import AnimatedCursor from "react-animated-cursor"; // react-animated-cursor 임포트
+import { ReactTyped } from "react-typed";
+import AnimatedCursor from "react-animated-cursor";
+import W_SocialLinks from "../components/W_SocialLinks";
+import "../styles/global.css";
 
 const About: React.FC = () => {
-  // 모달 상태 관리
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<string>("");
   const { setColor, setLogoColor } = useNavbarContext();
+  const [showIntroduce, setShowIntroduce] = useState(false);
+  const [showArrow, setShowArrow] = useState(true);
+
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
-    setColor("text-white"); // About 페이지에서 네비게이션 텍스트 색상 설정
-    setLogoColor("text-white"); // About 페이지에서 로고 색상 설정
+    setColor("text-white");
+    setLogoColor("text-white");
 
     return () => {
-      setColor("text-gray-600"); // 페이지 이동 시 기본 색상으로 복원
-      setLogoColor("text-black"); // 페이지 이동 시 기본 색상으로 복원
+      setColor("text-gray-600");
+      setLogoColor("text-black");
     };
   }, [setColor, setLogoColor]);
-  // 모달 열기
-  const openModal = (content: string) => {
-    setModalContent(content);
-    setModalIsOpen(true);
-  };
 
-  // 모달 닫기
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setModalContent("");
-  };
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange((latestValue) => {
+      setShowArrow(latestValue < 0.95);
+    });
+
+    return () => unsubscribe();
+  }, [scrollYProgress]);
 
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col bg-black text-white p-32 "
+      className="min-h-screen flex flex-col bg-black text-white p-32"
     >
-      <div className="flex flex-row justify-start w-full space-x-12 items-start">
+      <div className="flex flex-row justify-around w-full space-x-8 items-start">
         {/* Profile Picture and Basic Information (Left Side) */}
+
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -46,111 +47,102 @@ const About: React.FC = () => {
           className="flex flex-col items-center w-1/4"
         >
           <img
-            src="./images/TesT.png" // Replace with your image URL
+            src="./images/TesT.png"
             alt="Profile"
-            className="w-40 h-40 rounded-full border-4 border-gray-300 mb-4"
+            className="w-40.5 h-40.5 rounded-full border-4 border-white mb-4"
           />
           <h2 className="text-4xl font-bold">Jaeho Lee</h2>
           <p className="text-lg mt-2">생년월일: 1999/12/15</p>
         </motion.div>
 
-        {/* GitHub Contributions and Education Section (Right Side) */}
+        {/* Typing Animation (Right Side) */}
         <motion.div
-          className="flex flex-row space-x-12 items-start w-3/4"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 1 }}
+          className="flex flex-col items-center w-3/4"
         >
-          {/* GitHub Contributions */}
-          <div className="flex flex-col items-center space-y-4">
-            <h3 className="text-2xl font-bold mb-4">GitHub Contributions</h3>
-            {/* GitHub Contributions Chart */}
-            <img
-              src="https://ghchart.rshah.org/FF60A6/jaeho9"
-              alt="GitHub Contributions Chart"
-              className="border border-gray-300 rounded-lg shadow-lg"
+          <h2 className="text-5xl font-bold text-white mb-8">
+            <ReactTyped
+              strings={["안녕하세요 저는 프론트 개발자 이재호 라고 합니다."]}
+              typeSpeed={40}
+              backSpeed={30}
+              showCursor={false}
+              loop={false}
+              onComplete={() => setShowIntroduce(true)}
             />
-            {/* GitHub Stats */}
-            <img
-              src="https://github-readme-stats.vercel.app/api?username=jaeho9&hide_title=true&hide_border=true&show_icons=true&count_private=true&include_all_commits=true"
-              alt="GitHub Stats"
-              className="border border-gray-300 rounded-lg shadow-lg"
-            />
-            {/* GitHub Streak */}
-            <img
-              src="https://github-readme-streak-stats.herokuapp.com/?user=jaeho9"
-              alt="GitHub Streak"
-              className="border border-gray-300 rounded-lg shadow-lg"
-            />
-          </div>
+          </h2>
 
-          {/* Education and Background */}
-          <div className="flex flex-col items-start space-y-4">
-            <h3 className="text-2xl font-bold mb-4">Education & Background</h3>
-            {/* Education Card */}
-            <div
-              className="bg-white text-black p-6 rounded-lg shadow-lg w-72 cursor-pointer hover:bg-gray-200 transition"
-              onClick={() =>
-                openModal(
-                  "출신학교: ABC 대학교\n전공: 컴퓨터 공학\n기타 교육: XYZ 부트캠프 수료"
-                )
-              }
+          {/* Introduce Section with Animation */}
+          {showIntroduce && (
+            <motion.div
+              className="flex flex-col pt-40 justify-start"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
             >
-              <h4 className="text-xl font-bold">출신학교 및 교육</h4>
-              <p className="mt-2">ABC 대학교 - 컴퓨터 공학</p>
-              <p>XYZ 부트캠프</p>
-            </div>
-          </div>
+              <motion.h2
+                className="text-7xl font-bold text-pink-500 mb-16"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                Introduce
+              </motion.h2>
+
+              <motion.div className="text-3xl font-bold space-y-10">
+                <motion.p
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  ▶ 사용자 경험을 최우선으로 생각하는 프론트엔드 개발자입니다.
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  ▶ 기술과 디자인의 조화를 추구하며, 새로운 도전을 즐깁니다.
+                </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  ▶ 빠르게 변하는 환경 속에서도 끊임없이 배우고 성장하는
+                  개발자입니다.
+                </motion.p>
+              </motion.div>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 
-      {/* Interview Section (Below Contributions & Education) */}
-      <motion.div
-        className="mt-12 w-full flex flex-col items-center justify-center"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }}
-      >
-        <h3 className="text-2xl font-bold mb-4">Interview</h3>
-        <div className="w-full flex flex-col items-center space-y-4">
-          {/* Example questions - displayed vertically */}
-          <button
-            className="bg-white text-black p-4 w-1/2 rounded-lg shadow-lg cursor-pointer hover:bg-gray-200 transition"
-            onClick={() =>
-              openModal(
-                "제가 개발을 시작한 이유는 [개발을 시작하게 된 이유]입니다."
-              )
-            }
+      {/* 아래 방향 아이콘과 텍스트 */}
+      {showArrow && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 0 }}
+            animate={{
+              opacity: [0.8, 1, 0.8],
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              repeatType: "loop",
+            }}
           >
-            개발을 시작한 이유는(질문 수정해야됨)?
-          </button>
-          <button
-            className="bg-white text-black p-4 w-1/2 rounded-lg shadow-lg cursor-pointer hover:bg-gray-200 transition"
-            onClick={() =>
-              openModal(
-                "저는 개발할 때 [당신의 철학]을 가장 중요하게 생각합니다."
-              )
-            }
-          >
-            어떤 개발을 좋아하는지 (질문 수정해야됨)?
-          </button>
-          <button
-            className="bg-white text-black p-4 w-1/2 rounded-lg shadow-lg cursor-pointer hover:bg-gray-200 transition"
-            onClick={() =>
-              openModal("제가 받은 교육은 [당신의 교육과정]입니다.")
-            }
-          >
-            asdfasdfasdfasdfasdf?
-          </button>
+            <img
+              src="/images/icons/B_arrow.svg"
+              alt="아래로 스크롤"
+              className="w-16 h-16"
+            />
+          </motion.div>
+          <p className="text-white mt-2 text-sm">스크롤을 내려주세요</p>
         </div>
-      </motion.div>
-
-      {/* Modal Component */}
-      <CustomModal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        content={modalContent}
-      />
+      )}
 
       <AnimatedCursor
         color="255, 255, 255"
@@ -163,6 +155,7 @@ const About: React.FC = () => {
         trailingSpeed={10}
         clickables={["a", "button", ".interactive"]}
       />
+      <W_SocialLinks />
     </section>
   );
 };

@@ -4,7 +4,7 @@ import { ReactTyped } from "react-typed";
 import { Link as ScrollLink } from "react-scroll";
 import AnimatedCursor from "react-animated-cursor"; // react-animated-cursor 임포트
 import { useNavbarContext } from "../context/NavbarContext";
-
+import SocialLinks from "../components/SocialLinks";
 const Home = () => {
   const { setColor, setLogoColor } = useNavbarContext();
 
@@ -21,11 +21,10 @@ const Home = () => {
     <section
       id="home"
       className="flex flex-col items-center justify-center h-screen bg-cover bg-center bg-white"
-      // style={{ backgroundImage: `url('/images/bg3.jpg')` }}
     >
       <div className="text-center">
         <motion.h1
-          className="text-[80px] font-bold text-gray-800 mb-2"
+          className="text-[80px] font-bold text-black mb-2"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
@@ -33,7 +32,7 @@ const Home = () => {
           Frontend Developer
         </motion.h1>
         <motion.h1
-          className="text-[80px] font-bold text-gray-800"
+          className="text-[80px] font-bold text-black"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
@@ -54,6 +53,8 @@ const Home = () => {
           loop
         />
       </p>
+
+      <SocialLinks />
       <AnimatedCursor
         color="0, 0, 0"
         innerScale={1.2}

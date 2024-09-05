@@ -1,6 +1,6 @@
 import React from "react";
 
-const SocialLinks = () => {
+const W_SocialLinks = () => {
   return (
     <div className="fixed bottom-4 right-4 flex flex-col space-y-3 z-50">
       <a
@@ -10,7 +10,7 @@ const SocialLinks = () => {
         className="hover:opacity-80 transition"
       >
         <img
-          src="/images/icons/blackgithub.svg"
+          src="/images/icons/whitegithub.svg"
           alt="GitHub"
           className="w-12 h-12"
         />
@@ -21,10 +21,14 @@ const SocialLinks = () => {
         rel="noopener noreferrer"
         className="hover:opacity-80 transition"
       >
-        <img src="/images/icons/velog.svg" alt="Blog" className="w-12 h-12" />
+        <img
+          src="/images/icons/whitevelog.svg"
+          alt="Blog"
+          className="w-12 h-12"
+        />
       </a>
     </div>
   );
 };
 
-export default SocialLinks;
+export default W_SocialLinks;
