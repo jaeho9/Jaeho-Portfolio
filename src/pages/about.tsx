@@ -1,4 +1,3 @@
-// src/pages/About.tsx
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll } from "framer-motion";
 import { useNavbarContext } from "../context/NavbarContext";
@@ -10,8 +9,8 @@ import "../styles/global.css";
 const About: React.FC = () => {
   const { setColor, setLogoColor } = useNavbarContext();
   const [showIntroduce, setShowIntroduce] = useState(false);
-  const [showArrow, setShowArrow] = useState(true);
 
+  const firstSectionRef = useRef<HTMLElement | null>(null);
   const secondSectionRef = useRef<HTMLElement | null>(null);
   const thirdSectionRef = useRef<HTMLElement | null>(null);
 
@@ -27,6 +26,7 @@ const About: React.FC = () => {
     };
   }, [setColor, setLogoColor]);
 
+  // 스크롤 진행 상황에 따라 화살표 표시 여부 결정
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((latestValue) => {
       // 첫 번째와 두 번째 섹션에서 화살표를 보여줍니다.
@@ -45,12 +45,12 @@ const About: React.FC = () => {
     <>
       {/* 첫 번째 섹션 */}
       <section
+        ref={firstSectionRef} // 첫 번째 섹션 참조 추가
         id="about"
         className="min-h-screen flex flex-col bg-black text-white p-32 pt-40"
       >
         <div className="flex flex-row justify-around w-full space-x-8 items-start">
           {/* Profile Picture and Basic Information (Left Side) */}
-
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -147,7 +147,7 @@ const About: React.FC = () => {
       {/* 두 번째 섹션 */}
       <section
         ref={secondSectionRef}
-        className="min-h-screen bg-black flex flex-row p-32 pt-40 text-white"
+        className="min-h-screen bg-black flex flex-row p-32 pt-40 text-white relative"
       >
         {/* 왼쪽: Education */}
         <motion.div
@@ -192,7 +192,7 @@ const About: React.FC = () => {
       {/* 세 번째 섹션 (Skills) */}
       <section
         ref={thirdSectionRef}
-        className="min-h-screen bg-gray-900 p-32 pt-40 text-white"
+        className="min-h-screen bg-black p-32 pt-40 text-white relative"
       >
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -209,6 +209,19 @@ const About: React.FC = () => {
             <li>Node.js</li>
           </ul>
         </motion.div>
+
+        {/* 세 번째 섹션의 위로 가는 화살표 */}
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2">
+          <p className="text-sm text-gray-400">Click!</p>
+          <motion.img
+            src="./images/icons/T_arrow.svg" // 위로 가는 화살표 아이콘
+            alt="Scroll Up Arrow"
+            className="w-12 h-12 cursor-pointer rotate-180" // 화살표를 위로 향하게 회전
+            animate={{ y: [0, 10, 0], opacity: [1, 0.5, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            onClick={() => handleScrollToSection(firstSectionRef)} // 첫 번째 섹션으로 이동
+          />
+        </div>
       </section>
 
       <AnimatedCursor

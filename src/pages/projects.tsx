@@ -1,5 +1,6 @@
 import React from "react";
-
+import AnimatedCursor from "react-animated-cursor";
+import W_SocialLinks from "../components/W_SocialLinks";
 const Projects = () => {
   return (
     <section
@@ -22,6 +23,19 @@ const Projects = () => {
           <p className="mt-2">A blog platform built with React and Node.js.</p>
         </div>
       </div>
+
+      <AnimatedCursor
+        color="255, 255, 255"
+        innerScale={1.2}
+        innerSize={20}
+        outerAlpha={0.6}
+        outerScale={1.5}
+        outerSize={30}
+        showSystemCursor={false}
+        trailingSpeed={10}
+        clickables={["a", "button", ".interactive"]}
+      />
+      <W_SocialLinks />
     </section>
   );
 };
