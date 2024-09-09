@@ -7,6 +7,7 @@ import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 
 import { NavbarProvider } from "./context/NavbarContext";
 import ScrollProgressBar from "./components/ScrollProgressBar";
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <Router>
       <NavbarProvider>
+        {/* <Sidebar /> */}
         <Navbar />
         <ScrollProgressBar />
         <Routes>
