@@ -1,27 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import { Link as ScrollLink } from "react-scroll";
-import AnimatedCursor from "react-animated-cursor"; // react-animated-cursor 임포트
 import { useNavbarContext } from "../context/NavbarContext";
-import SocialLinks from "../components/SocialLinks";
+import ScrollArrow from "../components/ScrollArrow";
+import { ParallaxProvider, Parallax, useParallax } from "react-scroll-parallax";
 const Home = () => {
-  const { setColor, setLogoColor } = useNavbarContext();
-
-  useEffect(() => {
-    setColor("text-black"); // Home 페이지에서 네비게이션 텍스트 색상 설정
-    setLogoColor("text-black"); // Home 페이지에서 로고 색상 설정
-
-    return () => {
-      setColor("text-gray-600"); // 페이지 이동 시 기본 색상으로 복원
-      setLogoColor("text-black"); // 페이지 이동 시 기본 색상으로 복원
-    };
-  }, [setColor, setLogoColor]);
   return (
     <section
       id="home"
       className="flex flex-col items-center justify-center h-screen bg-cover bg-center bg-white"
     >
+      {/* <Parallax speed={-10}> */}
       <div className="text-center">
         <motion.h1
           className="text-[80px] font-bold text-black mb-2"
@@ -40,6 +30,8 @@ const Home = () => {
           Jaeho Lee
         </motion.h1>
       </div>
+      {/* </Parallax> */}
+
       <p className="text-[30px] text-center text-gray-600 mb-8">
         <ReactTyped
           strings={[
@@ -53,19 +45,7 @@ const Home = () => {
           loop
         />
       </p>
-
-      <SocialLinks />
-      <AnimatedCursor
-        color="0, 0, 0"
-        innerScale={1.2}
-        innerSize={20}
-        outerAlpha={0.6}
-        outerScale={1.5}
-        outerSize={30}
-        showSystemCursor={false}
-        trailingSpeed={10}
-        clickables={["a", "button", ".interactive"]}
-      />
+      {/* <ScrollArrow targetRef={aboutSectionRef} /> */}
     </section>
   );
 };
