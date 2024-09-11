@@ -1,0 +1,19 @@
+/* src/styles/TechStack.css */
+
+.tech-stack-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.tech-item {
+  font-size: 24px;
+  margin: 10px 20px;
+  color: #333;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tech-item:hover {
+  color: #007bff;
+}

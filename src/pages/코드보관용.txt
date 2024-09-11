@@ -87,3 +87,43 @@
           </button>
         </div>
       </motion.div> */}
+
+
+
+
+
+      //////////////////
+
+      {/* 두 번째 섹션 */}
+      <section
+        id="education"
+        className="min-h-screen bg-white flex flex-col p-32 pt-30 text-black relative"
+      >
+        <motion.div
+          className="w-full mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <h2 className="text-5xl font-bold text-black mb-6">Education</h2>
+          <p className="text-2xl">
+            동아대학교 컴퓨터공학과 전공 (2018.03 ~ 2024.02)
+          </p>
+          <p className="text-2xl mt-6 font-bold">Awards</p>
+          <p className="text-xl">Dong-a 소프트웨어 경시대회 우수상</p>
+        </motion.div>
+
+        {/* 오른쪽: Bootcamp Experience */}
+        <motion.div
+          className="w-full"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <h2 className="text-5xl font-bold text-black mb-6">Bootcamp</h2>
+          <p className="text-2xl">
+            프로그래머스 클라우딩 어플리케이션 엔지니어링 데브코스 (2023.12.17 ~
+            2024.05.17)
+          </p>
+        </motion.div>
+      </section>
