@@ -4,8 +4,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        harbor: "#E6E7E8", // 원하는 이름으로 정의
+      boxShadow: {
+        "3xl": "0 10px 20px rgba(0, 0, 0, 0.5)", // 예시: 더 진한 그림자
       },
     },
   },

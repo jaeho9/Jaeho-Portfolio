@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
-import { Link as ScrollLink } from "react-scroll";
 import TechStack from "../components/TechStack";
 import { Parallax } from "react-scroll-parallax";
 import { useInView } from "react-intersection-observer";
 import HomeAnimation from "../components/LottieAnimation/HomeAnimation";
+import ScrollArrow from "../components/ScrollArrow";
 const Home = () => {
   const { ref, inView } = useInView({ triggerOnce: true });
 
@@ -55,24 +55,7 @@ const Home = () => {
             loop
           />
         </p>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-          <p className="text-sm mt-2">Click!</p>
-          <ScrollLink
-            to="about" // 스크롤할 섹션의 ID
-            smooth={true}
-            duration={300}
-            className="relative"
-          >
-            <motion.img
-              src="/images/icons/B_arrow.svg"
-              alt="Scroll Down"
-              className="w-12 h-12"
-              initial={{ y: 0 }}
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </ScrollLink>
-        </div>
+        <ScrollArrow scrollToId="about" />
       </motion.div>
 
       {/* Parallax 효과를 적용한 기술 스택 */}

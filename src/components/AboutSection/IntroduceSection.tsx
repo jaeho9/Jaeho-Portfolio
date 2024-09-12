@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimationComponent from "../LottieAnimation/AboutAnimation";
-
+import { Link as ScrollLink } from "react-scroll";
+import ScrollArrow from "../ScrollArrow";
 const IntroduceSection: React.FC = () => {
   const [selected, setSelected] = useState<string>("introduce");
 
@@ -66,7 +67,7 @@ const IntroduceSection: React.FC = () => {
       </div>
 
       {/* 버튼 섹션 */}
-      <div className="mt-[300px] flex justify-center space-x-4">
+      <div className="mt-[190px] flex justify-center space-x-4">
         {sections.map((section) => (
           <button
             key={section.id}
@@ -104,6 +105,7 @@ const IntroduceSection: React.FC = () => {
             ))}
         </AnimatePresence>
       </div>
+      <ScrollArrow scrollToId="skills" />
     </section>
   );
 };

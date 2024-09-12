@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { Parallax } from "react-scroll-parallax";
 import { ReactTyped } from "react-typed";
+import ScrollArrow from "../ScrollArrow";
 
 const AboutMeSection: React.FC = () => {
   return (
@@ -26,25 +27,7 @@ const AboutMeSection: React.FC = () => {
         </div>
       </Parallax>
 
-      {/* Scroll Arrow */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
-        <p className="text-sm mt-2">Click!</p>
-        <ScrollLink
-          to="introduce" // 스크롤할 섹션의 ID
-          smooth={true}
-          duration={300}
-          className="relative"
-        >
-          <motion.img
-            src="/images/icons/B_arrow.svg"
-            alt="Scroll Down"
-            className="w-12 h-12"
-            initial={{ y: 0 }}
-            animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </ScrollLink>
-      </div>
+      <ScrollArrow scrollToId="introduce" />
     </section>
   );
 };
