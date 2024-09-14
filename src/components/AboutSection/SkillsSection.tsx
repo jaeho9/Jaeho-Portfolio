@@ -79,7 +79,7 @@ const SkillsSection: React.FC = () => (
       <Bucket id="studying" label="Studying" />
       <Bucket id="cooperation" label="Cooperation" />
     </div>
-    <ScrollArrow scrollToId="projects" />
+    <ScrollArrow scrollToId="projectspage" />
   </section>
 );
 

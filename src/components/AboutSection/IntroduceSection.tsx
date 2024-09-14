@@ -84,7 +84,7 @@ const IntroduceSection: React.FC = () => {
       </div>
 
       {/* 큰 네모 안에 선택된 내용 표시 */}
-      <div className="relative w-[1600px] h-[450px] border-4 border-black bg-white mt-8 p-10 flex items-center justify-center rounded-3xl">
+      <div className="relative w-[1600px] h-[400px] border-4 border-black bg-white mt-8 p-10 flex items-center justify-center rounded-3xl">
         <AnimatePresence mode="wait">
           {sections
             .filter((section) => section.id === selected)
