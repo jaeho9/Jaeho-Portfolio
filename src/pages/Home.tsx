@@ -55,8 +55,8 @@ const Home = () => {
             loop
           />
         </p>
-        <ScrollArrow scrollToId="about" />
       </motion.div>
+      <ScrollArrow scrollToId="about" />
 
       {/* Parallax 효과를 적용한 기술 스택 */}
       <Parallax translateY={[-20, 20]}>

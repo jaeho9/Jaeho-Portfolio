@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollArrow from "../ScrollArrow";
+import AnimationComponent from "../LottieAnimation/SkillsAnimation";
 
 // 아이콘 컴포넌트 (SVG 파일이나 다른 방식으로 대체 가능)
 const Icon: React.FC<{ src: string; alt: string }> = ({ src, alt }) => (
@@ -72,6 +73,10 @@ const SkillsSection: React.FC = () => (
     id="skills"
     className="relative min-h-screen flex flex-col items-center justify-center bg-white p-6 md:p-10"
   >
+    {/* 애니메이션 컴포넌트 */}
+    <div className="absolute top-12 right-12">
+      <AnimationComponent />
+    </div>
     <h2 className="text-3xl md:text-6xl font-bold text-black mb-20">Skills</h2>
     <div className="bucket-container flex flex-wrap gap-6 md:gap-12">
       <Bucket id="main-skills" label="MainSkills" />
