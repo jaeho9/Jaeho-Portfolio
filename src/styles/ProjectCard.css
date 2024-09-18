@@ -9,7 +9,7 @@
   transform: translateY(-50%);
   cursor: pointer;
   z-index: 1;
-  color: black; /* 아이콘의 색상 */
+  color: transparent; /* 아이콘의 색상 */
 }
 
 .slick-prev {

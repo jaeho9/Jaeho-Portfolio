@@ -12,6 +12,7 @@ import Sidebar from "./components/Sidebar";
 import { ParallaxProvider } from "react-scroll-parallax";
 import "./styles/sidebar.css";
 import "./styles/styles.css";
+import Footer from "./pages/Footer";
 
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -41,6 +42,7 @@ const App = () => {
           <section id="contact">
             <Contact />
           </section>
+          <Footer />
         </div>
         <SocialLinks />
         <AnimatedCursor
