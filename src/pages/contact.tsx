@@ -33,12 +33,12 @@ const Contact = () => {
             <span className="font-bold text-4xl">Velog:</span>
             <br />
             <a
-              href="https://velog.io/@l2281/series"
+              href="https://velog.io/@l2281/posts"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 block text-[28px] hover:text-gray-500"
             >
-              https://velog.io/@l2281/series
+              https://velog.io/@l2281/posts
             </a>
           </p>
         </div>

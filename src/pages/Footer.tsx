@@ -16,7 +16,18 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="underline hover:text-gray-400"
             >
-              LottieFiles
+              LottieFiles.
+            </a>
+          </p>
+          <p className="text-sm md:text-base">
+            Icons by :{" "}
+            <a
+              href="https://icons8.kr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-gray-400"
+            >
+              icons8.
             </a>
           </p>
         </div>
@@ -50,3 +61,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// icons8.com
