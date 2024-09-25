@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimationComponent from "../LottieAnimation/AboutAnimation";
-import { Link as ScrollLink } from "react-scroll";
 import ScrollArrow from "../ScrollArrow";
-const IntroduceSection: React.FC = () => {
-  const [selected, setSelected] = useState<string>("introduce");
+import { ReactTyped } from "react-typed"; // ReactTyped를 임포트합니다.
 
-  const copyEmailToClipboard = () => {
-    const email = "l2281@naver.com";
-    navigator.clipboard.writeText(email);
-  };
+const IntroduceSection: React.FC = () => {
+  const [selected, setSelected] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showContent, setShowContent] = useState(false); // 내용 표시 여부 상태
 
   const sections = [
     {
-      id: "WELCOME",
-      title: "WELCOME",
+      id: "default",
+      title: "질문을 선택해 주세요",
       content: "",
     },
     {
-      id: "introduce",
-      title: "Introduce",
-      content: "안녕하세요, 저는 Jaeho Lee입니다. 1999년 12월 15일생입니다.",
+      id: "Q. 질문1",
+      title: "Q. 질문~~~~~~~~~~~~~~~~~~~~~~~~~~~1",
+      content: "A. 질문 답변1 ~~~~~",
+    },
+    {
+      id: "Q. 질문2",
+      title: "Q. 질문2",
+      content: "A. 질문 답변2 ~~~~~",
     },
     {
       id: "education",
@@ -37,6 +40,17 @@ const IntroduceSection: React.FC = () => {
 
   const handleSectionClick = (id: string) => {
     setSelected(id);
+    setIsMenuOpen(false);
+    setShowContent(false); // 클릭 시 콘텐츠 숨기기
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const copyEmailToClipboard = () => {
+    const email = "l2281@naver.com";
+    navigator.clipboard.writeText(email);
   };
 
   return (
@@ -60,51 +74,87 @@ const IntroduceSection: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* 메뉴 버튼 */}
+      <div className="relative w-3/4">
+        <button
+          onClick={toggleMenu}
+          className="border-2 border-black px-10 py-3 text-lg font-bold w-full text-center"
+        >
+          {selected
+            ? sections.find((s) => s.id === selected)?.title
+            : "질문을 선택해 주세요"}
+          {isMenuOpen ? " ▲" : " ▼"}
+        </button>
 
-      {/* 애니메이션 컴포넌트 */}
-      <div className="absolute top-12 right-12">
-        <AnimationComponent />
-      </div>
-
-      {/* 버튼 섹션 */}
-      <div className="mt-[190px] flex justify-center space-x-4">
-        {sections.map((section) => (
-          <button
-            key={section.id}
-            className={`border-2 px-6 py-3 text-lg font-bold ${
-              selected === section.id
-                ? "border-black text-black"
-                : "border-gray-400 text-gray-500"
-            }`}
-            onClick={() => handleSectionClick(section.id)}
-          >
-            {section.title}
-          </button>
-        ))}
-      </div>
-
-      {/* 큰 네모 안에 선택된 내용 표시 */}
-      <div className="relative w-[1600px] h-[400px] border-4 border-black bg-white mt-8 p-10 flex items-center justify-center rounded-3xl">
-        <AnimatePresence mode="wait">
-          {sections
-            .filter((section) => section.id === selected)
-            .map((section) => (
-              <motion.div
-                key={section.id}
-                layoutId="content-box"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center"
-              >
-                <motion.h2 className="text-4xl font-bold mb-6">
-                  {section.title}
-                </motion.h2>
-                <motion.p className="text-2xl">{section.content}</motion.p>
-              </motion.div>
-            ))}
+        {/* 드롭다운 메뉴 */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute left-0 mt-2 z-10 bg-white border border-black rounded shadow-lg w-full"
+            >
+              <motion.ul className="flex flex-col">
+                {sections.map((section, index) => (
+                  <motion.li
+                    key={section.id}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      transition: {
+                        delay: index * 0.1,
+                      },
+                    }}
+                    exit={{ opacity: 0, scale: 0 }}
+                    className={`block border-2 border-black px-10 py-3 text-lg font-bold ${
+                      selected === section.id ? "bg-white" : "bg-white"
+                    } w-full`}
+                    onClick={() => handleSectionClick(section.id)}
+                  >
+                    {section.title}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
+
+      {/* 선택된 내용 표시 */}
+      <div className="relative w-3/4 border-4 border-black bg-white mt-8 p-10 flex flex-col items-center justify-center rounded-3xl">
+        <AnimatePresence>
+          {selected === null || selected === "default" ? (
+            <AnimationComponent />
+          ) : (
+            <>
+              <ReactTyped
+                strings={[sections.find((s) => s.id === selected)?.title || ""]}
+                typeSpeed={50}
+                backSpeed={50}
+                loop={false}
+                onComplete={() => setShowContent(true)} // 타이핑이 끝나면 showContent를 true로 설정
+                className="text-4xl font-bold mb-6"
+              />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }} // 초기 상태
+                animate={{
+                  opacity: showContent ? 1 : 0, // 상태에 따라 변경
+                  y: showContent ? 0 : 20, // 상태에 따라 변경
+                }}
+                transition={{ type: "spring", stiffness: 300 }} // 스프링 효과
+                className="text-2xl"
+              >
+                {sections.find((s) => s.id === selected)?.content}
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* 스크롤 화살표 */}
       <ScrollArrow scrollToId="skills" />
     </section>
   );
