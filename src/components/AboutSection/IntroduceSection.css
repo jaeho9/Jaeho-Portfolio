@@ -9,3 +9,19 @@ button:hover {
   border-color: black;
   border-radius: 1px;
 }
+.keyword {
+  color: #d73a49;
+  font-weight: bold;
+}
+
+.function-name {
+  color: #6f42c1;
+}
+
+.variable {
+  color: #005cc5;
+}
+
+.string {
+  color: #032f62;
+}
