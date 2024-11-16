@@ -15,8 +15,8 @@ const functionContents: Record<FunctionKeys, string> = {
   Introduce: `
     function introduce( ) {
       var name = "Lee JaeHo"; // 이름; 
-      var title = "Web Developer";
-      var email = "l2281@naver.com";
+      var title = "Web Developer"; 
+      var email = "l2281@naver.com"; // 이메일
     }`,
   Interview: `
     function interview( ) {
