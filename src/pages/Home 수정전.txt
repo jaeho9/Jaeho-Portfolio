@@ -6,21 +6,17 @@ import { Parallax } from "react-scroll-parallax";
 import { useInView } from "react-intersection-observer";
 import HomeAnimation from "../components/LottieAnimation/HomeAnimation";
 import ScrollArrow from "../components/ScrollArrow";
-
 const Home = () => {
   const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
     <section
       id="home"
-      className="flex flex-col items-center justify-center h-screen bg-cover bg-center bg-white px-4 md:px-12 lg:px-24"
+      className="flex flex-col items-center justify-center h-screen bg-cover bg-center bg-white"
     >
-      {/* Lottie Animation */}
-      <div className="absolute top-8 right-8 sm:top-12 sm:right-12 w-20 sm:w-24 md:w-32">
+      <div className="absolute top-12 right-12">
         <HomeAnimation />
       </div>
-
-      {/* Main Text Animation */}
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
@@ -28,9 +24,8 @@ const Home = () => {
         transition={{ duration: 1 }}
         className="text-center"
       >
-        {/* Large Title */}
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-2"
+          className="text-[80px] font-bold text-black mb-2"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
@@ -39,7 +34,7 @@ const Home = () => {
         </motion.h1>
 
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black"
+          className="text-[80px] font-bold text-black"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
@@ -47,8 +42,7 @@ const Home = () => {
           Jaeho Lee
         </motion.h1>
 
-        {/* Subtext with ReactTyped */}
-        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-center text-gray-600 mb-8">
+        <p className="text-[30px] text-center text-gray-600 mb-8">
           <ReactTyped
             strings={[
               "Frontend Developer",
@@ -62,12 +56,10 @@ const Home = () => {
           />
         </p>
       </motion.div>
-
-      {/* Scroll Arrow */}
       <ScrollArrow scrollToId="about" />
 
-      {/* Parallax Tech Stack */}
-      <Parallax translateY={[-20, 20]} className="mt-12 sm:mt-16 md:mt-20">
+      {/* Parallax 효과를 적용한 기술 스택 */}
+      <Parallax translateY={[-20, 20]}>
         <TechStack />
       </Parallax>
     </section>

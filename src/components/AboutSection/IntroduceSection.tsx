@@ -13,35 +13,38 @@ type FunctionKeys =
 
 const functionContents: Record<FunctionKeys, string> = {
   Introduce: `
-    function introduce( ) {
-      var name = "Lee JaeHo"; // 이름; 
-      var title = "Web Developer"; 
-      var email = "l2281@naver.com"; // 이메일
-    }`,
+      function introduce( ) { // 나의 프로필 
+        var name = "Lee JaeHo"; // 이름; 
+        var title = "Frontend Developer"; // 분야 타이틀 
+        var email = "l2281@naver.com"; // 이메일
+      }`,
   Interview: `
-    function interview( ) {
-      var favoriteLanguage = "JavaScript";
-      var dreamJob = "Frontend Engineer";
-      var hobbies = ["Coding", "Reading", "Gaming"];
-    }`,
+      function interview() { // Q & A 
+        var Q.1: "개발할 때 기술적인 면에서 가장 중요하게 생각하는 것은?";
+        var A.1: "사용자가 UI를 보고 바로 기능을 이해할 수 있도록 만드는 과정을 중요하게생각하고 개발을 합니다.";
+        var Q.2: "자기계발을 위해 어떤 것들을 하고 있는가?";
+        var A.2: "저는 자기계발을 위해 부트캠프 와 리액트 오픈소스 펼쳐보기 챌린지 등 과 같은 다양한 활동에 참여하고 활동을 통해 얻은 지식을 
+            개인 블로그에 기록하고 복습하며 실제 프로젝트를 진행하면서 해당 기술들을 적용하면서 자기계발을 하고있습니다.";
+      }`,
   Education: `
-    function education( ) {
-      var university = "Dong-A University";
-      var major = "Computer Science";
-      var graduationYear = "2018 ~ 2024";
-      var skills = ["알고리즘", "운영체제", "자료구조"];
-    }`,
+      function education( ) {
+        var university = "Dong-A University"; 
+        var major = "Computer Science"; // 컴퓨터공학과 전공
+        var graduationYear = "2018 ~ 2024"; 
+        var awards = "교내 SW 경시대회 DEVDAY 우수상"; // 수상 경험
+      }`,
   Bootcamp: `
-    function bootcamp( ) {
-      var program = "Programmers DevCamp";
-      var focus = "Front-Stack Development";
-      var duration = "6 months";
-    }`,
+      function bootcamp( ) { // 부트캠프
+        var program = "Programmers DevCamp"; // 프로그래머스 부트캠프
+        var focus = "웹앱 엔지니어링"; // 분야
+        var duration = "5 months"; // 기간
+      }`,
   Study: `
-    function study( ) {
-      var skills = ["React", "TypeScript", "TailwindCSS"];
-      var currentGoal = "Mastering Animation Libraries";
-    }`,
+      function study( ) {
+        var skills = ["React", "TypeScript", "TailwindCSS", "ReactNative"]; // 기술스택
+        var blogLink = "https://mytechblog.com"; // 블로그 링크
+        var github = "https://github.com/LeeJaeHo"; // GitHub 링크
+      }`,
 };
 
 const IntroduceSection: React.FC = () => {

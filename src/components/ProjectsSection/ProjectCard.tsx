@@ -4,6 +4,8 @@ import ScrollArrow from "../ScrollArrow";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaReact, FaJsSquare } from "react-icons/fa";
+import { RiSupabaseFill } from "react-icons/ri";
+import { SiReactquery } from "react-icons/si";
 import "../../styles/ProjectCard.css";
 import Modal from "./Modal";
 import AnimationComponent from "../LottieAnimation/ProjectAnimation";
@@ -14,7 +16,12 @@ const projects = [
     title: "StudyBuddy",
     description: "Description for Project 1",
     image: "../images/StudyBuddy.png",
-    techStack: [<FaReact />, <FaJsSquare />],
+    techStack: [
+      <FaReact />,
+      <FaJsSquare />,
+      <RiSupabaseFill />,
+      <SiReactquery />,
+    ],
   },
   {
     id: 2,

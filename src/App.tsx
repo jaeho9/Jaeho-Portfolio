@@ -15,18 +15,18 @@ import "./styles/styles.css";
 import Footer from "./pages/Footer";
 
 const App = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <NavbarProvider>
       <ParallaxProvider>
-        {isSidebarOpen && <Sidebar />}
+        {/* {isSidebarOpen && <Sidebar />}
         <button
           className="sidebar-toggle"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
           {isSidebarOpen ? "✕" : "☰"}
-        </button>
+        </button> */}
         <Navbar />
         <ScrollProgressBar />
         <div>
