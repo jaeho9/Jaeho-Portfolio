@@ -36,13 +36,9 @@ const App = () => {
           <section id="about">
             <About />
           </section>
-          <section id="projects">
-            <Projects />
-          </section>
-          <section id="contact">
-            <Contact />
-          </section>
-          <Footer />
+          <section id="projects">{/* <Projects /> */}</section>
+          <section id="contact">{/* <Contact /> */}</section>
+          {/* <Footer /> */}
         </div>
         <SocialLinks />
         <AnimatedCursor

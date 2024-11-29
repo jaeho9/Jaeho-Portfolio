@@ -13,7 +13,7 @@ const AboutMeSection: React.FC = () => {
     >
       <Parallax translateY={[-20, 20]}>
         <div className="flex flex-col items-center justify-center h-full">
-          <h1 className="text-9xl font-bold text-center">
+          <h1 className="lg:text-9xl md:text-7xl sm:text-6xl xs:text-4xl font-bold text-center">
             <ReactTyped
               strings={["My Projects"]}
               typeSpeed={100}

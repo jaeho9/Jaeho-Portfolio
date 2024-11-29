@@ -1,6 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Link as ScrollLink } from "react-scroll";
 import { Parallax } from "react-scroll-parallax";
 import { ReactTyped } from "react-typed";
 import ScrollArrow from "../ScrollArrow";
@@ -13,7 +11,7 @@ const AboutMeSection: React.FC = () => {
     >
       <Parallax translateY={[-20, 20]}>
         <div className="flex flex-col items-center justify-center h-full">
-          <h1 className="text-9xl font-bold text-center">
+          <h1 className="lg:text-9xl md:text-7xl sm:text-6xl xs:text-4xl font-bold text-center">
             <ReactTyped
               strings={["About Me"]}
               typeSpeed={100}

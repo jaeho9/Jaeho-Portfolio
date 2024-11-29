@@ -18,7 +18,7 @@ const TechStack = () => {
       {techStack.map((tech, index) => (
         <motion.div
           key={index}
-          className="text-xl font-semibold p-4"
+          className="font-semibold p-2 xs:text-xs md:text-xl "
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 100 }}
