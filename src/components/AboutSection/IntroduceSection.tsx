@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollArrow from "../ScrollArrow";
-import { ReactTyped } from "react-typed"; // import 수정: ReactTyped를 소문자로
+import { ReactTyped } from "react-typed"; // 수정: ReactTyped 대소문자 조정
 import AnimationComponent from "../LottieAnimation/AboutAnimation";
 
 type FunctionKeys =
@@ -21,9 +21,9 @@ const functionContents: Record<FunctionKeys, string> = {
   Interview: `
       function interview() { // Q & A 
         var Q.1: "개발할 때 기술적인 면에서 가장 중요하게 생각하는 것은?";
-        var A.1: "사용자가 UI를 보고 바로 기능을 이해할 수 있도록 만드는 과정을 중요하게생각하고 개발을 합니다.";
+        var A.1: "사용자가 UI를 보고 바로 기능을 이해할 수 있도록 만드는 과정을 중요하게 생각하고 개발을 합니다.";
         var Q.2: "자기계발을 위해 어떤 것들을 하고 있는가?";
-        var A.2: "저는 자기계발을 위해 부트캠프 와 리액트 오픈소스 펼쳐보기 챌린지 등 과 같은 다양한 활동에 참여하고 활동을 통해 얻은 지식을 
+        var A.2: "저는 자기계발을 위해 부트캠프와 리액트 오픈소스 펼쳐보기 챌린지 등과 같은 다양한 활동에 참여하고 활동을 통해 얻은 지식을 
             개인 블로그에 기록하고 복습하며 실제 프로젝트를 진행하면서 해당 기술들을 적용하면서 자기계발을 하고있습니다.";
       }`,
   Education: `
@@ -55,14 +55,14 @@ const IntroduceSection: React.FC = () => {
   return (
     <section
       id="introduce"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-white text-black p-8"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-white text-black p-4 sm:p-6 md:p-8"
     >
       <div className="absolute top-12 right-12">
         <AnimationComponent />
       </div>
       {/* 타이핑 애니메이션: 안내 메시지 */}
       {!selectedFunction && (
-        <div className="mb-8 font-bold text-2xl">
+        <div className="mb-8 font-bold text-lg sm:text-xl md:text-2xl text-center">
           <ReactTyped
             strings={[
               "Choose a function to explore!",
@@ -76,21 +76,21 @@ const IntroduceSection: React.FC = () => {
       )}
 
       {/* 함수 선택 버튼 */}
-      <div className="flex space-x-4 mb-8">
+      <div className="flex flex-wrap justify-center gap-4 mb-8">
         {Object.keys(functionContents).map((funcName) => (
           <motion.button
             key={funcName}
-            className={`p-3 px-6 text-2xl rounded-lg font-semibold border-2 border-black transition-all shadow-md ${
+            className={`p-2 md:p-3 lg:p-4 px-4 md:px-6 lg:px-8 text-sm md:text-lg lg:text-2xl rounded-lg font-semibold border-2 border-black transition-all shadow-md ${
               selectedFunction === funcName
                 ? "bg-black text-white"
                 : "bg-white text-black"
             }`}
-            onClick={() => setSelectedFunction(funcName as FunctionKeys)} // 클릭 시 상태 변경
-            initial={{ rotate: -4 }} // 기본 기울기 설정
+            onClick={() => setSelectedFunction(funcName as FunctionKeys)}
+            initial={{ rotate: -4 }}
             whileHover={{
-              rotate: selectedFunction === funcName ? -4 : 4, // 선택된 상태일 경우 기울기 유지
-            }} // 마우스 오버 시 기울어짐
-            animate={{ rotate: selectedFunction === funcName ? 0 : -4 }} // 선택된 함수에 따라 상태 유지
+              rotate: selectedFunction === funcName ? -4 : 4,
+            }}
+            animate={{ rotate: selectedFunction === funcName ? 0 : -4 }}
             transition={{ type: "spring", stiffness: 300 }}
             whileTap={{ scale: 0.95 }}
             style={{ transition: "border-color 0.4s" }}
@@ -103,10 +103,12 @@ const IntroduceSection: React.FC = () => {
       {/* 선택된 함수 내용 표시 */}
       {selectedFunction && (
         <div
-          className="bg-black text-green-500 p-8 rounded-lg w-full max-w-3xl shadow-lg"
+          className="bg-black text-green-500 p-4 sm:p-6 md:p-8 rounded-lg w-full max-w-xs sm:max-w-md md:max-w-3xl shadow-lg"
           style={{ whiteSpace: "pre-wrap" }}
         >
-          <h3 className="text-white font-bold mb-2">실행 결과:</h3>
+          <h3 className="text-white font-bold mb-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+            실행 결과:
+          </h3>
           <ReactTyped
             strings={[functionContents[selectedFunction]]}
             typeSpeed={20}
@@ -114,6 +116,8 @@ const IntroduceSection: React.FC = () => {
             showCursor={true}
             cursorChar={"|"}
             onComplete={() => console.log(`${selectedFunction}( ) 완료`)}
+            className="text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose"
+            style={{ lineHeight: "1.5" }} // 추가적으로 줄 간격 설정
           />
         </div>
       )}

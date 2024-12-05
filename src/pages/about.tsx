@@ -9,7 +9,7 @@ const About: React.FC = () => {
     <>
       {/* 첫 번째 섹션 */}
       <AboutMeSection />
-      {/* <IntroduceSection /> */}
+      <IntroduceSection />
       <SkillsSection />
     </>
   );
