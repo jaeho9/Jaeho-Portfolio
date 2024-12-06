@@ -1,14 +1,14 @@
 import React from "react";
-import { FaGithub, FaEnvelope, FaBlog } from "react-icons/fa"; // 아이콘 사용
+import { FaGithub, FaEnvelope, FaBlog } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="w-full bg-black text-white py-6">
-      <div className="container mx-auto flex flex-col items-center justify-between space-y-4 md:space-y-0 md:flex-row md:space-x-4">
+      <div className="container mx-auto flex flex-col items-center justify-center space-y-6 sm:space-y-4 md:flex-row md:justify-between">
         {/* 왼쪽 섹션 */}
-        <div className="flex space-x-6 text-sm md:text-base">
+        <div className="flex flex-col text-center md:text-left space-y-2 sm:space-y-0 sm:flex-row sm:space-x-6 text-sm md:text-base">
           <p>&copy; 2024 Jaeho's Portfolio. All rights reserved.</p>
-          <p className="text-sm md:text-base">
+          <p>
             Animation source:{" "}
             <a
               href="https://lottiefiles.com"
@@ -16,22 +16,24 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="underline hover:text-gray-400"
             >
-              LottieFiles.
+              LottieFiles
             </a>
           </p>
-          <p className="text-sm md:text-base">
-            Icons by :{" "}
+          <p>
+            Icons by:{" "}
             <a
               href="https://icons8.kr/"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-gray-400"
             >
-              icons8.
+              icons8
             </a>
           </p>
         </div>
-        <div className="flex space-x-4">
+
+        {/* 오른쪽 섹션 */}
+        <div className="flex justify-center space-x-6">
           <a
             href="mailto:l2281@naver.com"
             className="text-white hover:text-gray-400 transition-colors duration-300"
@@ -61,5 +63,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// icons8.com
