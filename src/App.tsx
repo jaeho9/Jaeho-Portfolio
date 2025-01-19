@@ -30,11 +30,15 @@ const App = () => {
         <Navbar />
         <ScrollProgressBar />
         <div>
-          <section id="home">{/* <Home /> */}</section>
+          <section id="home">
+            <Home />
+          </section>
           <section id="about">
             <About />
           </section>
-          <section id="projects">{/* <Projects /> */}</section>
+          <section id="projects">
+            <Projects />
+          </section>
           <section id="contact">
             <Contact />
           </section>
