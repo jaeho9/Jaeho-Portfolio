@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -8,7 +7,6 @@ import { NavbarProvider } from "./context/NavbarContext";
 import ScrollProgressBar from "./components/ScrollProgressBar";
 import SocialLinks from "./components/SocialLinks";
 import AnimatedCursor from "react-animated-cursor";
-import Sidebar from "./components/Sidebar";
 import { ParallaxProvider } from "react-scroll-parallax";
 import "./styles/sidebar.css";
 import "./styles/styles.css";

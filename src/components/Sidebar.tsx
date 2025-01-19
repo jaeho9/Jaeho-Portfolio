@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
-import "../styles/sidebar.css"; // 스타일링을 위한 CSS 파일
+// import "../styles/sidebar.css"; // 스타일링을 위한 CSS 파일
 
 const Sidebar = () => {
   return (

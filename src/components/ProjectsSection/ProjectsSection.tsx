@@ -1,6 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Link as ScrollLink } from "react-scroll";
 import { Parallax } from "react-scroll-parallax";
 import { ReactTyped } from "react-typed";
 import ScrollArrow from "../ScrollArrow";
