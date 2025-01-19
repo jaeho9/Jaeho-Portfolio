@@ -13,6 +13,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import "./styles/sidebar.css";
 import "./styles/styles.css";
 import Footer from "./pages/Footer";
+import ResponsiveMessage from "./pages/ResponsiveMessage";
 
 const App = () => {
   // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -27,6 +28,7 @@ const App = () => {
         >
           {isSidebarOpen ? "✕" : "☰"}
         </button> */}
+        <ResponsiveMessage />
         <Navbar />
         <ScrollProgressBar />
         <div>

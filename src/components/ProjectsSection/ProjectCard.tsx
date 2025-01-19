@@ -4,17 +4,44 @@ import ScrollArrow from "../ScrollArrow";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaReact, FaJsSquare } from "react-icons/fa";
-import { RiSupabaseFill } from "react-icons/ri";
-import { SiReactquery } from "react-icons/si";
+import { RiSupabaseFill, RiFirebaseFill } from "react-icons/ri";
+import { SiReactquery, SiTypescript } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 import "../../styles/ProjectCard.css";
 import Modal from "./Modal";
 import AnimationComponent from "../LottieAnimation/ProjectAnimation";
 
 const projects = [
   {
+    id: 2,
+    title: "StudyBuddy (mobile)",
+    description:
+      "StudyBuddy 는 온라인에서 동일한 시험 또는 분야를 학습하는 사람들끼리 정보와 자료를 공유하는 공간입니다.",
+    image: "../images/StudyBuddy.png",
+    techStack: [<TbBrandReactNative />, <RiFirebaseFill />],
+    githubLink: "https://github.com/jaeho9/StudyBuddy-mobile",
+  },
+  {
+    id: 3,
+    title: "Jaeho Portfolio",
+    description: "Jaeho Portfolio 는 개인포토폴리오 사이트 입니다.",
+    image: "../images/JHPF.png",
+    techStack: [<FaReact />, <SiTypescript />],
+    githubLink: "https://github.com/jaeho9/my-portfolio",
+  },
+  {
     id: 1,
-    title: "StudyBuddy",
-    description: "Description for Project 1",
+    title: "작업중..",
+    description: "~ing",
+    image: "project4.jpg",
+    techStack: [<FaReact />, <FaJsSquare />],
+    // githubLink: "https://github.com/username/project4",
+  },
+  {
+    id: 1,
+    title: "StudyBuddy (Web)",
+    description:
+      "StudyBuddy는 온라인에서 동일한 시험 또는 분야를 학습하는 사람들끼리 정보와 자료를 공유하는 공간입니다.",
     image: "../images/StudyBuddy.png",
     techStack: [
       <FaReact />,
@@ -22,27 +49,10 @@ const projects = [
       <RiSupabaseFill />,
       <SiReactquery />,
     ],
-  },
-  {
-    id: 2,
-    title: "Project 2",
-    description: "Description for Project 2",
-    image: "project2.jpg",
-    techStack: [<FaReact />, <FaJsSquare />],
-  },
-  {
-    id: 3,
-    title: "Project 3",
-    description: "Description for Project 3",
-    image: "project3.jpg",
-    techStack: [<FaReact />, <FaJsSquare />],
-  },
-  {
-    id: 4,
-    title: "Project 4",
-    description: "Description for Project 4",
-    image: "project4.jpg",
-    techStack: [<FaReact />, <FaJsSquare />],
+    githubLink: "https://github.com/jihyezi/StudyBuddy",
+    blogLink:
+      "https://velog.io/@l2281/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0-StudyBuddy",
+    ProjectLink: "https://study-buddy-black.vercel.app/",
   },
 ];
 
@@ -57,7 +67,7 @@ const ProjectCard: React.FC = () => {
   };
 
   const settings = {
-    dots: false, // dots 제거
+    dots: true, // dots 제거
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -67,7 +77,7 @@ const ProjectCard: React.FC = () => {
     beforeChange: (oldIndex: number, newIndex: number) => {
       setCurrentIndex(newIndex);
     },
-    nextArrow: <div className="slick-next" />,
+    nextArrow: <div className="slick-next " />,
     prevArrow: <div className="slick-prev" />,
   };
 
@@ -98,7 +108,7 @@ const ProjectCard: React.FC = () => {
                 />
                 <div className="p-4">
                   <h2 className="text-xl font-bold mb-2">{project.title}</h2>
-                  <p className="text-gray-600">{project.description}</p>
+                  {/* <p className="text-gray-600">{project.description}</p> */}
                   <div className="flex space-x-2 mt-4">
                     {project.techStack.map((icon, index) => (
                       <span key={index} className="text-2xl">

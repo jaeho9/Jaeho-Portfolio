@@ -4,47 +4,37 @@ import ScrollArrow from "../ScrollArrow";
 import { ReactTyped } from "react-typed"; // 수정: ReactTyped 대소문자 조정
 import AnimationComponent from "../LottieAnimation/AboutAnimation";
 
-type FunctionKeys =
-  | "Introduce"
-  | "Interview"
-  | "Education"
-  | "Bootcamp"
-  | "Study";
+type FunctionKeys = "Introduce" | "Developer" | "Future";
 
-const functionContents: Record<FunctionKeys, string> = {
-  Introduce: `
-      function introduce( ) { // 나의 프로필 
-        var name = "Lee JaeHo"; // 이름; 
-        var title = "Frontend Developer"; // 분야 타이틀 
-        var email = "l2281@naver.com"; // 이메일
-      }`,
-  Interview: `
-      function interview() { // Q & A 
-        var Q.1: "개발할 때 기술적인 면에서 가장 중요하게 생각하는 것은?";
-        var A.1: "사용자가 UI를 보고 바로 기능을 이해할 수 있도록 만드는 과정을 중요하게 생각하고 개발을 합니다.";
-        var Q.2: "자기계발을 위해 어떤 것들을 하고 있는가?";
-        var A.2: "저는 자기계발을 위해 부트캠프와 리액트 오픈소스 펼쳐보기 챌린지 등과 같은 다양한 활동에 참여하고 활동을 통해 얻은 지식을 
-            개인 블로그에 기록하고 복습하며 실제 프로젝트를 진행하면서 해당 기술들을 적용하면서 자기계발을 하고있습니다.";
-      }`,
-  Education: `
-      function education( ) {
-        var university = "Dong-A University"; 
-        var major = "Computer Science"; // 컴퓨터공학과 전공
-        var graduationYear = "2018 ~ 2024"; 
-        var awards = "교내 SW 경시대회 DEVDAY 우수상"; // 수상 경험
-      }`,
-  Bootcamp: `
-      function bootcamp( ) { // 부트캠프
-        var program = "Programmers DevCamp"; // 프로그래머스 부트캠프
-        var focus = "웹앱 엔지니어링"; // 분야
-        var duration = "5 months"; // 기간
-      }`,
-  Study: `
-      function study( ) {
-        var skills = ["React", "TypeScript", "TailwindCSS", "ReactNative"]; // 기술스택
-        var blogLink = "https://mytechblog.com"; // 블로그 링크
-        var github = "https://github.com/LeeJaeHo"; // GitHub 링크
-      }`,
+const functionContents: Record<
+  FunctionKeys,
+  { title: string; content: string }
+> = {
+  Introduce: {
+    title: "나의 프로필", // 첫 번째 박스 제목
+    content: `function introduce( ) { 
+      var greeting = "안녕하세요! 저는 프론트엔드 개발자 이재호 입니다.";
+      var skills = "저는 주로 React 와 React Native 를 사용하여 개발합니다.";
+      var studyMethod = "저는 공부를 할때는 개인 블로그와 Notion에 기록하며 공부를 합니다.";
+      var hobby = "저의 취미는 E-Sports 경기 와 영화 시청을 즐기는 편입니다.";
+    }`,
+  },
+  Developer: {
+    title: "저는 ____ 하는 개발자 입니다.", // 두 번째 박스 제목
+    content: `function Developer( ) {
+      var 성장 = "저는 항상 새로운 기술을 배우며 성장하는 개발자가 되기 위해 노력하고 있습니다.";
+      var 소통 = "협업을 할때 팀원들과 적극적으로 소통하며 함께 성장하는 개발자 입니다.";
+      var 도전 = "개발을 하면서 새로운 도전을 두려워하지 않고, 항상 도전하며 성장하는 개발자입니다.";
+    }`,
+  },
+  Future: {
+    title: "저는 언젠가 ____ 개발자가 되고 싶습니다.", // 세 번째 박스 제목
+    content: `function Future( ) {
+      var 인정받는 = "저는 팀원들에게 기술적으로 인정받는 개발자가 되고 싶습니다.";
+      var 도움을 주는 = "저는 다른 개발자들이 문제를 해결할 수 있도록 돕는 개발자가 되고 싶습니다.";
+      var 다양한 분야에서의 = "프론트뿐만 아니라 다른 개발 지식도 습득하여 폭넓은 역량을 가진 개발자가 되고 싶습니다.";
+    }`,
+  },
 };
 
 const IntroduceSection: React.FC = () => {
@@ -103,27 +93,34 @@ const IntroduceSection: React.FC = () => {
       {/* 선택된 함수 내용 표시 */}
       {selectedFunction && (
         <div
-          className="bg-black text-green-500 p-4 sm:p-6 md:p-8 rounded-lg w-full max-w-xs sm:max-w-md md:max-w-3xl shadow-lg"
-          style={{ whiteSpace: "pre-wrap" }}
+          className="bg-white text-black border-2 border-black p-6 sm:p-8 md:p-10 rounded-lg w-full max-w-sm sm:max-w-lg md:max-w-5xl shadow-lg"
+          style={{
+            whiteSpace: "pre-wrap", // 줄바꿈 처리
+            wordBreak: "break-word", // 길어지는 단어 처리
+            overflowWrap: "break-word", // 단어가 너무 길면 줄바꿈
+            minHeight: "200px", // 최소 높이 지정
+            height: "auto", // 내용에 맞게 높이가 자동으로 조절되도록
+            padding: "20px", // 여유있는 패딩
+            lineHeight: "1.8", // 줄 간격 늘리기
+          }}
         >
-          <h3 className="text-white font-bold mb-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">
-            실행 결과:
+          <h3 className="text-black font-bold mb-4 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+            {functionContents[selectedFunction].title}
           </h3>
           <ReactTyped
-            strings={[functionContents[selectedFunction]]}
+            strings={[functionContents[selectedFunction].content]}
             typeSpeed={20}
             backSpeed={20}
             showCursor={true}
             cursorChar={"|"}
             onComplete={() => console.log(`${selectedFunction}( ) 완료`)}
-            className="text-base sm:text-lg md:text-xl leading-relaxed sm:leading-loose"
+            className="text-2xs font-mono"
             style={{ lineHeight: "1.5" }} // 추가적으로 줄 간격 설정
           />
         </div>
       )}
 
-      {/* 스크롤 안내 화살표 */}
-      <ScrollArrow scrollToId="skills" />
+      <ScrollArrow scrollToId="timeline" />
     </section>
   );
 };
