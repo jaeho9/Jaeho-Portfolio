@@ -35,7 +35,6 @@ const projects = [
     description: "~ing",
     image: "project4.jpg",
     techStack: [<FaReact />, <FaJsSquare />],
-    // githubLink: "https://github.com/username/project4",
   },
   {
     id: 1,
