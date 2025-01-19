@@ -8,7 +8,6 @@ import ScrollProgressBar from "./components/ScrollProgressBar";
 import SocialLinks from "./components/SocialLinks";
 import AnimatedCursor from "react-animated-cursor";
 import { ParallaxProvider } from "react-scroll-parallax";
-import "./styles/sidebar.css";
 import "./styles/styles.css";
 import Footer from "./pages/Footer";
 import ResponsiveMessage from "./pages/ResponsiveMessage";
