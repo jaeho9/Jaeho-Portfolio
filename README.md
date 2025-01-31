@@ -86,3 +86,16 @@ React, TypeScript, Tailwind CSS를 활용하여 제작되었으며, SPA 방식�
  ┣ 📜App.tsx
  ┣ 📜declarations.d.ts
  ┗ 📜index.tsx
+```
+---
+
+## 🌍 배포 링크
+🔗 **배포 링크:** [포트폴리오 사이트 보기](https://jaeho-portfolio.vercel.app/)
+
+---
+
+## 🔥 개선할 점 및 향후 계획
+- 다크 모드 추가 – Tailwind CSS 다크 모드 지원
+- SEO 최적화 – 메타태그 및 오픈그래프 설정
+- 로딩 속도 개선 – 이미지 최적화 및 Lazy Loading 적용
+- 블로그 추가 – 기술 블로그 기능 구현  
