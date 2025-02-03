@@ -1,3 +1,7 @@
+>
+![HOME_1](https://github.com/user-attachments/assets/69ab21ab-7575-432c-81b4-634478863823)
+
+
 # 🌟 JaeHo Portfolio
 
 개인 포트폴리오 웹사이트입니다.  
