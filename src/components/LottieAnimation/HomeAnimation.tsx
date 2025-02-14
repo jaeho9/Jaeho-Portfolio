@@ -10,7 +10,7 @@ const AnimationComponent: React.FC = () => {
   };
 
   return (
-    <div className="mt-8 md:w-44 md:h-44 sm:w-40 sm:h-40 xs:w-36 xs:h-36">
+    <div className="mt-8 w-44 h-44">
       <Lottie animationData={loadingLottie} loop={true} autoplay={true} />
     </div>
   );

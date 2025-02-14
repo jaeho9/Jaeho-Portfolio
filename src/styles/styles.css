@@ -2,3 +2,14 @@
 .app {
   position: relative;
 }
+
+/* 반응형 최소 크기일 때 텍스트 박스를 중앙에 위치시키는 스타일 */
+@media (max-width: 640px) {
+  .timeline-description {
+    width: 90%; /* 설명글의 너비를 화면의 90%로 설정 */
+    padding: 1rem; /* 패딩을 줄여서 작은 화면에서도 잘 보이도록 */
+    font-size: 0.875rem; /* 글자 크기를 줄여서 가독성을 높임 */
+    left: 50%; /* 중앙에 위치 */
+    transform: translateX(-50%); /* 중앙 정렬 */
+  }
+}

@@ -66,10 +66,10 @@ const ProjectCard: React.FC = () => {
   };
 
   const settings = {
-    dots: true, // dots 제거
+    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 3, // 기본적으로 3개 표시
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "0",
@@ -78,6 +78,16 @@ const ProjectCard: React.FC = () => {
     },
     nextArrow: <div className="slick-next " />,
     prevArrow: <div className="slick-prev" />,
+    responsive: [
+      {
+        breakpoint: 768, // 모바일 화면 (768px 이하)
+        settings: {
+          slidesToShow: 1, // 모바일에서는 한 개만 표시
+          centerMode: false, // 카드 크기 유지
+          arrows: false, // 모바일에서 화살표 숨기기
+        },
+      },
+    ],
   };
 
   return (

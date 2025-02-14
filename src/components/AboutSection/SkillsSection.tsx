@@ -205,7 +205,7 @@ const SkillsSection: React.FC = () => {
       <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-black mb-12 sm:mb-20">
         Skills
       </h2>
-      <div className="bucket-container flex flex-wrap justify-center gap-6 md:gap-12">
+      <div className="bucket-container flex flex-wrap justify-center gap-6 md:gap-12 mb-20">
         <Bucket id="main-skills" label="Main Skills" skills={mainSkills} />
         <Bucket id="sub-skills" label="Sub Skills" skills={subSkills} />
         <Bucket id="studying" label="Studying" skills={studyingSkills} />
