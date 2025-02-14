@@ -25,7 +25,7 @@ const App = () => {
         >
           {isSidebarOpen ? "✕" : "☰"}
         </button> */}
-        {/* <ResponsiveMessage /> */}
+        <ResponsiveMessage />
         <Navbar />
         <ScrollProgressBar />
         <div>
