@@ -27,7 +27,7 @@ const ResponsiveMessage: React.FC = () => {
   return (
     <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
       <div className="text-white text-4xl font-bold text-center p-6">
-        죄송합니다, 현재 반응형 수정 중입니다.
+        죄송합니다, 현재 모바일 버전 수정 중입니다.
       </div>
     </div>
   );
