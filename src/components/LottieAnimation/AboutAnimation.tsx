@@ -3,15 +3,11 @@ import Lottie from "lottie-react";
 import loadingLottie from "../../assets/lottie/Animation.json";
 
 const AnimationComponent: React.FC = () => {
-  const options = {
-    animationData: loadingLottie,
-    loop: true, // 애니메이션 반복 여부
-    autoplay: true, // 애니메이션 자동 시작 여부
-  };
-
   return (
-    <div className="mt-8 w-40 h-40">
-      <Lottie animationData={loadingLottie} loop={true} autoplay={true} />
+    <div className="flex justify-center items-center mt-8 w-full">
+      <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
+        <Lottie animationData={loadingLottie} loop={true} autoplay={true} />
+      </div>
     </div>
   );
 };

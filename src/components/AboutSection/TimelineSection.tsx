@@ -111,20 +111,21 @@ const TimelineSection: React.FC = () => {
               {/* 설명 (선택된 연도에만 표시) */}
               {selectedYear === item.year && (
                 <motion.div
-                  className="absolute top-full mt-4 p-4 bg-black text-white rounded-lg shadow-lg text-center w-full sm:w-[500px] md:w-[600px] lg:w-[700px] mx-auto"
+                  className={`absolute top-full mt-4 p-4 bg-black text-white rounded-lg shadow-lg text-center
+      w-full sm:w-[500px] md:w-[600px] lg:w-[700px] mx-auto
+      ${window.innerWidth < 768 ? "left-1 transform -translate-x-1" : ""}`}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {/* ReactTyped를 사용한 타이핑 효과 */}
                   <ReactTyped
-                    strings={[item.description]} // 각 항목의 설명
-                    typeSpeed={50} // 타이핑 속도
-                    backSpeed={30} // 지우는 속도
-                    backDelay={1000} // 지운 후 다시 타이핑 전 대기 시간
-                    startDelay={500} // 시작 대기 시간
-                    loop={false} // 반복 여부
+                    strings={[item.description]}
+                    typeSpeed={50}
+                    backSpeed={30}
+                    backDelay={1000}
+                    startDelay={500}
+                    loop={false}
                   />
                 </motion.div>
               )}

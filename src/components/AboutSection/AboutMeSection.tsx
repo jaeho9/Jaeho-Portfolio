@@ -7,11 +7,11 @@ const AboutMeSection: React.FC = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col bg-white text-black p-32 pt-80 relative"
+      className="min-h-screen flex flex-col items-center justify-center bg-white text-black px-6 sm:px-12 md:px-20 lg:px-32 py-24 sm:py-32 md:py-40 relative"
     >
       <Parallax translateY={[-20, 20]}>
-        <div className="flex flex-col items-center justify-center h-full">
-          <h1 className="lg:text-9xl md:text-7xl sm:text-6xl xs:text-4xl font-bold text-center">
+        <div className="text-center">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold">
             <ReactTyped
               strings={["About Me"]}
               typeSpeed={100}
