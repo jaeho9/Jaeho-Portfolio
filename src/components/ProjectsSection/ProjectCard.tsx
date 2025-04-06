@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import ScrollArrow from "../ScrollArrow";
 import "slick-carousel/slick/slick.css";
@@ -120,6 +120,17 @@ const ProjectCard: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleCardClick = (project: any) => {
     setSelectedProject(project);
@@ -160,9 +171,11 @@ const ProjectCard: React.FC = () => {
         My Projects
       </h2>
       {/* 애니메이션 컴포넌트 */}
-      <div className="absolute top-12 right-12">
-        <AnimationComponent />
-      </div>
+      {!isMobile && (
+        <div className="absolute top-12 right-12">
+          <AnimationComponent />
+        </div>
+      )}
       <div className="relative w-full max-w-4xl">
         <Slider {...settings}>
           {projects.map((project) => (
