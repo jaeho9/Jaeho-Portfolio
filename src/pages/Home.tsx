@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ReactTyped } from "react-typed";
 import TechStack from "../components/TechStack";
@@ -9,6 +9,17 @@ import ScrollArrow from "../components/ScrollArrow";
 
 const Home = () => {
   const { ref, inView } = useInView({ triggerOnce: true });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section
@@ -16,9 +27,11 @@ const Home = () => {
       className="flex flex-col items-center justify-center h-screen bg-cover bg-center bg-white px-4 sm:px-8 md:px-12 lg:px-24"
     >
       {/* Lottie Animation */}
-      <div className="absolute top-4 right-4 sm:top-8 sm:right-8 w-16 sm:w-24 md:w-32">
-        <HomeAnimation />
-      </div>
+      {!isMobile && (
+        <div className="absolute top-4 right-4 sm:top-8 sm:right-8 w-16 sm:w-24 md:w-32">
+          <HomeAnimation />
+        </div>
+      )}
 
       {/* Main Text Animation */}
       <motion.div

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ScrollArrow from "../ScrollArrow";
 import AnimationComponent from "../LottieAnimation/SkillsAnimation";
@@ -192,6 +192,17 @@ const SkillsSection: React.FC = () => {
     },
     { src: "/images/icons/Skills/notion.svg", alt: "Notion", label: "Notion" },
   ];
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section
@@ -199,9 +210,11 @@ const SkillsSection: React.FC = () => {
       className="relative min-h-screen flex flex-col items-center justify-center bg-white p-6 md:p-10"
     >
       {/* 애니메이션 컴포넌트 */}
-      <div className="absolute top-12 right-12 hidden lg:block">
-        <AnimationComponent />
-      </div>
+      {!isMobile && (
+        <div className="absolute top-12 right-12 hidden lg:block">
+          <AnimationComponent />
+        </div>
+      )}
       <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-black mb-12 sm:mb-20">
         Skills
       </h2>

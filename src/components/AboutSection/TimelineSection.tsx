@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ScrollArrow from "../ScrollArrow";
 import AnimationComponent from "../LottieAnimation/AboutAnimation";
@@ -45,6 +45,17 @@ const timelineData = [
 
 const TimelineSection: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section
@@ -52,9 +63,11 @@ const TimelineSection: React.FC = () => {
       className="relative min-h-screen flex flex-col items-center justify-center bg-white text-black p-6 sm:p-8"
     >
       {/* 상단 애니메이션 컴포넌트 */}
-      <div className="absolute top-6 right-6">
-        <AnimationComponent />
-      </div>
+      {!isMobile && (
+        <div className="absolute top-6 right-6">
+          <AnimationComponent />
+        </div>
+      )}
 
       {/* 제목 */}
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8">

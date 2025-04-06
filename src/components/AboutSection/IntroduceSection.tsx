@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ScrollArrow from "../ScrollArrow";
 import { ReactTyped } from "react-typed";
@@ -45,16 +45,27 @@ const IntroduceSection: React.FC = () => {
   const [selectedFunction, setSelectedFunction] = useState<FunctionKeys | null>(
     null
   );
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <section
       id="introduce"
       className="relative min-h-screen flex flex-col items-center justify-center bg-white text-black px-4 sm:px-6 md:px-8 py-10 sm:py-16 md:py-20"
     >
-      {/* Lottie 애니메이션 (반응형 위치 조정) */}
-      <div className="absolute sm:top-12 sm:right-12 top-4 right-4 sm:block hidden">
-        <AnimationComponent />
-      </div>
+      {!isMobile && (
+        <div className="absolute sm:top-12 sm:right-12 top-4 right-4">
+          <AnimationComponent />
+        </div>
+      )}
 
       {/* 타이핑 애니메이션: 안내 메시지 */}
       {!selectedFunction && (
