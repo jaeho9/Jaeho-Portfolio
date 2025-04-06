@@ -71,10 +71,7 @@ const IntroduceSection: React.FC = () => {
       {!selectedFunction && (
         <div className="mb-8 font-bold text-lg sm:text-xl md:text-2xl text-center">
           <ReactTyped
-            strings={[
-              "탐색하고 싶은 function을 선택해 주세요!",
-              "버튼을 클릭하시면 코드를 확인하실 수 있습니다!",
-            ]}
+            strings={["탐색하고 싶은 function을 선택해 주세요!"]}
             typeSpeed={40}
             backSpeed={30}
             loop
