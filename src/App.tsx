@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -14,6 +15,20 @@ import ResponsiveMessage from "./pages/ResponsiveMessage";
 
 const App = () => {
   // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // 768px 이하면 모바일로 간주
+    };
+
+    handleResize(); // 초기 실행
+    window.addEventListener("resize", handleResize); // 창 크기 바뀔 때 감지
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <NavbarProvider>
@@ -44,17 +59,19 @@ const App = () => {
           <Footer />
         </div>
         <SocialLinks />
-        <AnimatedCursor
-          color="0, 0, 0"
-          innerScale={1.2}
-          innerSize={20}
-          outerAlpha={0.6}
-          outerScale={1.5}
-          outerSize={30}
-          showSystemCursor={false}
-          trailingSpeed={10}
-          clickables={["a", "button", ".interactive"]}
-        />
+        {!isMobile && (
+          <AnimatedCursor
+            color="0, 0, 0"
+            innerScale={1.2}
+            innerSize={20}
+            outerAlpha={0.6}
+            outerScale={1.5}
+            outerSize={30}
+            showSystemCursor={false}
+            trailingSpeed={10}
+            clickables={["a", "button", ".interactive"]}
+          />
+        )}
       </ParallaxProvider>
     </NavbarProvider>
   );
